@@ -1,0 +1,74 @@
+<form [formGroup]="searchParams" (ngSubmit)="itsSubmitted()">
+  <input
+    formControlName="city"
+    type="text"
+    name="city"
+    placeholder="City"
+    required
+  />
+  <input
+    formControlName="state"
+    type="text"
+    name="state"
+    placeholder="State"
+    required
+  />
+  <select formControlName="price" name="price" required>
+    <option *ngFor="let prices of priceSelect" value="{{ prices.value }}">{{
+      prices.view
+    }}</option>
+  </select>
+  <button type="submit">Get ate</button>
+</form>
+<div *ngIf="submitPressed == true">
+  <h1>{{ this.selectedBusiness.name }}</h1>
+  <p>{{ this.selectedBusiness.phone }}</p>
+  <img
+    *ngIf="selectedBusiness.rating === 0"
+    src="../../assets/regular/regular_0.png"
+  />
+  <img
+    *ngIf="selectedBusiness.rating === 1"
+    src="../../assets/regular/regular_1.png"
+  />
+  <img
+    *ngIf="selectedBusiness.rating === 1.5"
+    src="../../assets/regular/regular_1_half.png"
+  />
+  <img
+    *ngIf="selectedBusiness.rating === 2"
+    src="../../assets/regular/regular_2.png"
+  />
+  <img
+    *ngIf="selectedBusiness.rating === 2.5"
+    src="../../assets/regular/regular_2_half.png"
+  />
+  <img
+    *ngIf="selectedBusiness.rating === 3"
+    src="../../assets/regular/regular_3.png"
+  />
+  <img
+    *ngIf="selectedBusiness.rating === 3.5"
+    src="../../assets/regular/regular_3_half.png"
+  />
+  <img
+    *ngIf="selectedBusiness.rating === 4"
+    src="../../assets/regular/regular_4.png"
+  />
+  <img
+    *ngIf="selectedBusiness.rating === 4.5"
+    src="../../assets/regular/regular_4_half.png"
+  />
+  <img
+    *ngIf="selectedBusiness.rating === 5"
+    src="../../assets/regular/regular_5.png"
+  />
+  <p>
+    {{ this.selectedBusiness.transactions[0] || "Dine in only!" }}
+  </p>
+  <p>
+    {{ this.selectedBusiness.transactions[1] }}
+  </p>
+  <p>{{ this.selectedBusiness.location.address1 }}</p>
+  <img class="image" src="{{ this.selectedBusiness.image_url }}" alt="image" />
+</div>
